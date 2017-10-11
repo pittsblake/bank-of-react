@@ -41,6 +41,12 @@ class App extends Component {
       })
   }
 
+  addDebitToDebitList = (newDebitItem) => {
+    const newDebitList = [...this.state.debits]
+    newDebitList.push(newDebitItem)
+    this.setState({debits: newDebitList})
+  }
+
   componentWillMount() {
     this.getDebits()
     this.getCredits()
@@ -56,7 +62,7 @@ class App extends Component {
     }
   
     const DebitWrapper = () => {
-      return(<DebitsPage debits={this.state.debits} />)
+      return(<DebitsPage addDebitToDebitList = {this.state.addDebitToDebitList} accountBalance = {this.state.accountBalance} debits = {this.state.debits} credits = {this.state.credits}/>)
     }
 
     return (
